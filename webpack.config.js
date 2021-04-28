@@ -30,11 +30,10 @@ const cssLoaders = [
 module.exports = {
   entry: ['./src/index.tsx'],
   output: {
-    filename: '[name].[hash].js',
+    filename: '[name].[fullhash].js',
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
   },
-  watch: true,
   devServer: {
     port: 8080,
     contentBase: path.resolve(__dirname, 'src'),
@@ -87,7 +86,7 @@ module.exports = {
       template: './public/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: development ? '[name].css' : '[name].[hash].css',
+      filename: development ? '[name].css' : '[name].[fullhash].css',
       chunkFilename: '[id].css',
     }),
   ],
