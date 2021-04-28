@@ -1,0 +1,33 @@
+:global {
+  @font-face {
+    font-family: 'Roboto';
+    src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: #fff;
+    color: #333;
+    font-family: Roboto, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+
+    &:hover {
+      color: #666;
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+}

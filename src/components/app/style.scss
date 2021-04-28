@@ -1,0 +1,24 @@
+.app {
+  color: #f00;
+
+  div {
+    color: #00f;
+  }
+
+  &--disabled {
+    color: #008000;
+
+    div {
+      color: #808080;
+    }
+  }
+}
+
+.margin-button {
+  background-color: #008000;
+  margin: 10px;
+}
+
+.mixin-class {
+  font-size: 30px;
+}
