@@ -19,7 +19,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     indent: ['error', 2],
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'off',
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
     'react/prop-types': 'off',
@@ -28,6 +28,16 @@ module.exports = {
       'error',
       {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    ],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+          'vars': 'all',
+          'args': 'all',
+          'varsIgnorePattern': '^_',
+          'argsIgnorePattern': '^_',
+          'ignoreRestSiblings': true,
       },
     ],
   },

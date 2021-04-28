@@ -2,16 +2,19 @@
   "name": "react-boilerplate",
   "version": "1.0.0",
   "description": "react-boilerplate",
-  "main": "src/index.js",
+  "main": "public/electron.js",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack",
+    "start-old": "cross-env NODE_ENV=development webpack-dev-server",
+    "build-old": "cross-env NODE_ENV=production webpack",
+    "start": "concurrently \"cross-env NODE_ENV=development webpack-dev-server\" \"wait-on http://localhost:8080 && electron .\"",
+    "build": "cross-env NODE_ENV=production webpack && electron-builder",
     "lint": "eslint \"./src/**/*.+(ts|tsx)\" & stylelint ./src/**/*.scss",
     "lint-fix": "eslint \"./src/**/*.+(ts|tsx)\" --fix & stylelint ./src/**/*.scss --fix"
   },
   "dependencies": {
+    "electron-is-dev": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
@@ -22,8 +25,11 @@
     "@typescript-eslint/eslint-plugin": "^3.3.0",
     "@typescript-eslint/parser": "^3.3.0",
     "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^6.0.2",
     "cross-env": "^7.0.3",
     "css-loader": "^3.6.0",
+    "electron": "^12.0.5",
+    "electron-builder": "^22.10.5",
     "eslint": "6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.22.1",
@@ -40,6 +46,7 @@
     "stylelint-config-sass-guidelines": "^7.1.0",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5",
+    "wait-on": "^5.3.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
