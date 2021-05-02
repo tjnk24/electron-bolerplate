@@ -31,7 +31,8 @@ node_modules
 .DS_Store
 
 # App packaged
-release
+# release
+src/*.main.prod.js
 src/main.prod.js
 src/main.prod.js.map
 src/renderer.prod.js
@@ -45,6 +46,13 @@ main.js.map
 
 .idea
 npm-debug.log.*
+__snapshots__
+
+# Package.json
+package.json
+.travis.yml
 *.css.d.ts
 *.sass.d.ts
 *.scss.d.ts
+
+typings/*
