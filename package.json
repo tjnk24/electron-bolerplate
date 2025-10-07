@@ -15,7 +15,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "npm-run-all clean && webpack --config ./config/webpack/webpack.config.ts",
-    "electron": "electron ./build/main.electron.js",
+    "electron": "electron ./build/main.js",
     "clean": "rm -rf build && mkdir build",
     "lint-fix": "eslint ./src/**/*.ts --fix & eslint ./src/**/*.tsx --fix & stylelint ./src/**/*.scss --fix",
     "lint": "npm-run-all lint:*",

@@ -17,6 +17,7 @@ const development = process.env.NODE_ENV !== 'production';
 
 export default (): webpack.Configuration[] => [
     {
+        devtool: development && 'source-map',
         mode: 'development',
         entry: {
             main: ['./src/main.ts'],
@@ -37,7 +38,53 @@ export default (): webpack.Configuration[] => [
         },
         output: {
             path: path.resolve(process.cwd(), 'build'),
-            filename: '[name].electron.js',
+            filename: 'main.js',
+        },
+    },
+    {
+        devtool: development && 'source-map',
+        mode: 'development',
+        entry: './src/preload.ts',
+        target: 'electron-preload',
+        module: {
+            rules: [
+                {
+                    test: /\.ts(x?)$/,
+                    exclude: /node_modules/,
+                    use: [
+                        {
+                            loader: 'ts-loader',
+                        },
+                    ],
+                },
+            ]
+        },
+        output: {
+            path: path.resolve(process.cwd(), 'build'),
+            filename: 'preload.js',
+        },
+    },
+    {
+        devtool: development && 'source-map',
+        mode: 'development',
+        entry: './src/renderer.ts',
+        target: 'electron-renderer',
+        module: {
+            rules: [
+                {
+                    test: /\.ts(x?)$/,
+                    exclude: /node_modules/,
+                    use: [
+                        {
+                            loader: 'ts-loader',
+                        },
+                    ],
+                },
+            ]
+        },
+        output: {
+            path: path.resolve(process.cwd(), 'build'),
+            filename: 'renderer.js',
         },
         plugins: [
             new HtmlWebpackPlugin({
